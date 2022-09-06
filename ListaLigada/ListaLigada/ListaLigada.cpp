@@ -145,12 +145,48 @@ void inserirElemento()
 
 void excluirElemento()
 {
-	
+	int num;
+	cout << "digite o valor que deseja excluir:" << endl;
+	cin >> num;
+
+	NO* busca = posicaoElemento(num);
+	if (busca) {
+		cout << "O numero foi encontrado" << endl;
+		if (busca == primeiro) {
+			primeiro = primeiro->prox;
+			free(busca);
+			return;
+
+		}
+		else {
+			NO* aux = primeiro;
+			while (aux != NULL) {
+				if (aux->prox == busca) {
+					aux->prox = busca->prox;
+					cout << "O elemento foi excluido" << endl;
+					return;
+				}
+				aux = aux->prox;
+			}
+		}
+	}
+	else {
+		cout << "O elemento não foi encontrado" << endl;
+	}
 }
 
 void buscarElemento()
 {
-	
+	int num;
+	cout << "digite o elemento que você quer buscar:";
+	cin >> num;
+	NO* busca = posicaoElemento(num);
+
+	if (busca != NULL) {
+		cout << "O numero foi encontrado (;" << endl;
+	}
+	else
+		cout << "O numero que você digitou não foi encontrado" << endl;
 }
 
 
